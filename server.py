@@ -97,7 +97,7 @@ def classification():
 
         for i in range(len(r_hand)):
             response = requests.get(
-                'http://localhost:3333/files/'+r_hand[i]['image'])
+                'https://finger-api-node.herokuapp.com/files/'+r_hand[i]['image'])
             if(response.status_code == 200):
                 f = open('./input/'+r_hand[i]['image'], 'wb')
                 f.write(response.content)
@@ -112,7 +112,7 @@ def classification():
 
         for i in range(len(l_hand)):
             response = requests.get(
-                'http://localhost:3333/files/'+l_hand[i]['image'])
+                'https://finger-api-node.herokuapp.com/files/'+l_hand[i]['image'])
             if(response.status_code == 200):
                 f = open('./input/'+l_hand[i]['image'], 'wb')
                 f.write(response.content)
@@ -127,8 +127,6 @@ def classification():
             result[l_hand[i]['fing']] = aux
 
         return flask.jsonify(result)
-
-process('101_7.tif')
 
 if __name__ == "__main__":
     app.run()
