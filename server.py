@@ -106,7 +106,7 @@ def classification():
             aux = {
                 'minutiae': minutiae,
                 'singularity': singularity,
-                'image': 'http://localhost:5000/'+r_hand[i]['image']
+                'image': 'https://finger-api-python.herokuapp.com/'+r_hand[i]['image']
             }
             result[r_hand[i]['fing']] = aux
 
@@ -122,7 +122,7 @@ def classification():
             aux = {
                 'minutiae': minutiae,
                 'singularity': singularity,
-                'image': 'http://localhost:5000/'+l_hand[i]['image']
+                'image': 'https://finger-api-python.herokuapp.com/'+l_hand[i]['image']
             }
             result[l_hand[i]['fing']] = aux
 
