@@ -70,22 +70,11 @@ def calculate_singularities(im, angles, tolerance, W, mask):
                                  ((j+1)*W, (i+1)*W), colors[singularity], 2)
                     if (pt1 not in listPoints):
                         singularity_result[singularity] += 1
-                        pont1[singularity], pont2[singularity] = pt1, pt2
                         listPoints.append((j+0)*W)
                         listPoints.append((i+0)*W)
                         listPoints.append((j+1)*W)
                         listPoints.append((i+1)*W)
 
     print(singularity_result)
-    if(singularity_result["loop"] == 1 and singularity_result["delta"] == 1):
-        x1, y1 = pont1["loop"], pont2["loop"]
-        x2, y2 = pont1["delta"], pont2["delta"]
-
-        print(x1, y1)
-        print(x2, y2)
-
-        teste = x2 - x1
-        teste2 = y2 - y1
-        print(teste, "/", teste2)
 
     return result, singularity_result

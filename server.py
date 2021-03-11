@@ -97,7 +97,7 @@ def classification():
 
         for i in range(len(r_hand)):
             response = requests.get(
-                'https://finger-api-node.herokuapp.com/files/'+r_hand[i]['image'])
+                'http://localhost:3333/files/'+r_hand[i]['image'])
             if(response.status_code == 200):
                 f = open('./input/'+r_hand[i]['image'], 'wb')
                 f.write(response.content)
@@ -106,13 +106,13 @@ def classification():
             aux = {
                 'minutiae': minutiae,
                 'singularity': singularity,
-                'image': 'https://finger-api-python.herokuapp.com/'+r_hand[i]['image']
+                'image': 'http://localhost:5000/'+r_hand[i]['image']
             }
             result[r_hand[i]['fing']] = aux
 
         for i in range(len(l_hand)):
             response = requests.get(
-                'https://finger-api-node.herokuapp.com/files/'+l_hand[i]['image'])
+                'http://localhost:3333/files/'+l_hand[i]['image'])
             if(response.status_code == 200):
                 f = open('./input/'+l_hand[i]['image'], 'wb')
                 f.write(response.content)
@@ -122,12 +122,11 @@ def classification():
             aux = {
                 'minutiae': minutiae,
                 'singularity': singularity,
-                'image': 'https://finger-api-python.herokuapp.com/'+l_hand[i]['image']
+                'image': 'http://localhost:5000/'+l_hand[i]['image']
             }
             result[l_hand[i]['fing']] = aux
 
         return flask.jsonify(result)
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run()
